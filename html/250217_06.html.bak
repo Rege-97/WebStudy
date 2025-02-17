@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+ </head>
+ <body>
+  -홍길동<br/>
+  -둘리<br/>
+  -도우너<br/>
+  <hr/>
+  <ul type="square">
+	 <li>홍길동</li>
+	 <li>둘리</li>
+	 <li>도우너</li>
+  </ul>
+    <hr/>
+  <ol type="I">
+	 <li>홍길동</li>
+	 <li>둘리</li>
+	 <li>도우너</li>
+  </ol>
+ </body>
+</html>

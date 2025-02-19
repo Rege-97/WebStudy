@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+	#layer1{
+		font-size:20px;
+		color:blue;
+		font-family:'궁서';
+		font-weight:bold;
+		position:absolute;
+		left:150px;
+		top:150px;
+		z-index:5;
+	}
+  </style>
+ </head>
+ <body>
+  <div id="layer1">자바 개발자 과정</div>
+  <div id="layer2" style="font-size:20px;color:red;font-family:'궁서';font-weight=bold;position:absolute;left:153px;top:153px;">자바 개발자 과정</div>
+ </body>
+</html>

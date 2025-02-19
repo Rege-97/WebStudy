@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+	b,i{
+		/*속성:속성값;*/
+		color:blue;
+		font-family:'궁서';
+		font-size:20px;
+	}
+	
+	u{
+		color:green;
+		font-family:'돋음';
+		font-size:10px;
+	}
+	
+	/*div{
+		color:blue;
+		font-family:'궁서';
+		font-size:20px;
+		background:pink;
+	}*/
+	
+	.t1{
+		font-size:15px;
+		color:blue;
+		font-family:'궁서';
+		background:pink;
+	}
+	
+	.t2{
+		color:green;
+		font-size:15px;
+		font-family:'돋음';
+	}
+  </style>
+ </head>
+ <body>
+	<b>스타일 적용 텍스트</b><br>
+	<i>스타일 적용 텍스트</i><br>
+	<u>스타일 적용 텍스트</u><br>
+	<div class="t1">스타일 적용 텍스트</div>
+	<div class="t2">스타일 적용 텍스트</div>
+	<span class="t1">스타일 적용 텍스트</span>
+	<span class="t2">스타일 적용 텍스트</span>
+ </body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script>
+  function hi(name){
+	  document.write('<h4>'+name+'안녕하세요</h4>');
+	  document.write('<h4>반갑습니다</h4>');
+	}
+	
+	hi('홍길동');
+	hi('둘리');
+	hi('도우너');
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script>
+  /*
+  java : 자료형 변수이름=값;
+  js   : var 변수명=값; let,const
+  */
+  var name='홍길동';
+  var age=20;
+  sunggil=true;
+  
+  document.write('<h3>이름 : '+name+'</h3>');
+  document.write('<h3>나이 : '+age+'세</h3>');
+  document.write('<h3>성격 : '+sunggil+'</h3>');
+  
+	if(sunggil){
+	  document.write('<h3>성격이 참 좋아요~</h3>');
+	}else{
+	  document.write('<h3>성격이 참 더러워요~</h3>');
+	}
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>

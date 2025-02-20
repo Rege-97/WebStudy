@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script>
+	document.write('Hello JavaScript'); //System.out.println();
+	document.bgColor='pink';
+  </script>
+ </head>
+ <body onload="window.alert('안녕하세요 반갑습니다.')">
+  
+ </body>
+</html>

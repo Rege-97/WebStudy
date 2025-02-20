@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script>
+	function show1(){
+		var kor=parseInt(document.fm.kor.value);
+		var eng=parseInt(document.fm.eng.value);
+		var math=parseInt(document.fm.math.value);
+		
+		var sum=kor+eng+math;
+		var avg=parseInt(sum/3);
+		var avg2=parseInt(avg/10);
+		
+		switch(avg2){
+			case 10: case 9: var grade='A'; break;
+			case 8: var grade='B'; break;
+			case 7: var grade='C'; break;
+			case 6: var grade='D'; break;
+			default : var grade='F';
+		}
+		
+		if(kor>=40 && eng>=40 && math>=40 && avg>=60){
+			var result='합격';
+		}else{
+			var result='불합격';
+		}
+		
+		window.alert('시험결과\n총점 : '+sum+'점\n평균 : '+avg+'점\n등급 : '+grade+'\n시험결과 : '+result);
+	}
+  </script>
+  <style>
+	  table{
+		border-top:1px dashed black;
+		border-bottom: 1px dashed black;
+	  }
+	  div{
+		margin:10px;
+	  }
+  
+  </style>
+   
+ </head>
+ <body>
+ <h3 align="center">시험 결과 확인 프로그램</h3>
+ <form name="fm">
+ <table align="center" cellpadding="10px">
+	<tr>
+		<th>국어</th>
+		<td><input type="text" name="kor"></td>
+	</tr>
+	<tr>
+		<th>영어</th>
+		<td><input type="text" name="eng"></td>
+	</tr>
+	<tr>
+		<th>수학</th>
+		<td><input type="text" name="math"></td>
+	</tr>
+ </table>
+ <div align="center">
+  <input type="button" name="result" value="결과조회" onclick="show1();">
+  <input type="reset" name="reset" value="다시작성">
+ </div>
+  </form>
+ </body>
+</html>

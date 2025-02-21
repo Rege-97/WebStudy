@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script>
+  
+	function show(){
+		var kor=parseInt(document.fm.kor.value);
+		var eng=parseInt(document.fm.eng.value);
+		var math=parseInt(document.fm.math.value);
+		
+		var sum=kor+eng+math;
+		var avg=sum/3;
+		
+		switch(parseInt(avg/10)){
+			case 10: case 9: level='A'; break;
+			case 8: level='B'; break;
+			case 7: level='C'; break;
+			case 6: level='D'; break;
+			default : level='F';
+		}
+		
+		window.alert('시험결과\n총점 : '+sum+'점\n평균 : '+avg.toFixed(2)+'점\n등급 : '+level);
+	}
+  
+  </script>
+ </head>
+ <body>
+  <h1>시험 결과 조회 프로그램</h1>
+  <form name="fm">
+	<table border=1>
+		<tr>
+			<th>국어</th>
+			<td><input type="text" name="kor"></td>
+		<tr>
+		<tr>
+			<th>영어</th>
+			<td><input type="text" name="eng"></td>
+		<tr>
+		<tr>
+			<th>수학</th>
+			<td><input type="text" name="math"></td>
+		<tr>
+		<tr>
+			<td colspan="2" align="center">
+				<input type="button" value="시험결과" onclick="show();">
+				<input type="reset" value="다시작성">
+				
+			</td>
+		<tr>
+	</table>
+  </form>
+ </body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script>
+  
+	function show(){
+		for(var i=0;i<document.fm.level.length;i++){
+			if(document.fm.level[i].checked==true){
+				var level=document.fm.level[i].value;
+			}
+			
+		}
+		
+		switch(level){
+			case '1': point=5000; break;
+			case '2': point=3000; break;
+			case '3': point=1000; break;
+		}
+		
+		
+		
+		window.alert('당신이 선택한 회원등급의 포인트는 '+point+'점 입니다.');
+	  
+	}
+  
+  </script>
+ </head>
+ <body>
+  <h1>회원등급별 포인트 확인 프로그램</h1>
+  <form name="fm">
+  <label>회원등급</label>
+  <input type="radio" name="level" value="1" checked>정회원
+  <input type="radio" name="level" value="2">준회원
+  <input type="radio" name="level" value="3">일반회원<br>
+  <input type="button" value="포인트확인" onclick="show();">
+  </form>
+ </body>
+</html>

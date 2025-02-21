@@ -21,6 +21,12 @@
 			default : level='F';
 		}
 		
+		if(kor>=40 && eng>=40 && math>=40 && avg>=60){
+			var result='합격';
+		}else{
+			var result='불합격';
+		}
+		
 		window.alert('시험결과\n총점 : '+sum+'점\n평균 : '+avg.toFixed(2)+'점\n등급 : '+level);
 	}
   

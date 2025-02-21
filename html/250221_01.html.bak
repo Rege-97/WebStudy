@@ -13,7 +13,15 @@
 		var sum=kor+eng+math;
 		var avg=sum/3;
 		
-		window.alert('시험결과\n총점 : '+sum+'점\n평균 : '+avg.toFixed(2)+'점');
+		switch(parseInt(avg/10)){
+			case 10: case 9: level='A'; break;
+			case 8: level='B'; break;
+			case 7: level='C'; break;
+			case 6: level='D'; break;
+			default : level='F';
+		}
+		
+		window.alert('시험결과\n총점 : '+sum+'점\n평균 : '+avg.toFixed(2)+'점\n등급 : '+level);
 	}
   
   </script>

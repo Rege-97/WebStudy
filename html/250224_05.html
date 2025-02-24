@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  
+  <script>
+  
+	var now=new Date();
+	var y=now.getFullYear();
+	var m=now.getMonth()+1;
+	var d=now.getDate();
+	
+	document.write('<form name="fm">');
+	document.write('<select name="year">');
+	for(var i=1960;i<=y;i++){
+		if(i==y){
+			document.write('<option value="'+i+'" selected>'+i+'</option>');
+		}else{
+			document.write('<option value="'+i+'">'+i+'</option>');
+		}
+	}
+	document.write('</select>년 ');
+	
+	document.write('<select name="month">');
+	for(var i=1;i<=12;i++){
+		if(i==m){
+			document.write('<option value="'+i+'" selected>'+i+'</option>');
+		}else{
+			document.write('<option value="'+i+'">'+i+'</option>');
+		}
+	}
+	document.write('</select>월 ');
+	
+	document.write('<select name="date">');
+	for(var i=1;i<=31;i++){
+		if(i==d){
+			document.write('<option value="'+i+'" selected>'+i+'</option>');
+		}else{
+			document.write('<option value="'+i+'">'+i+'</option>');
+		}
+	}
+	document.write('</select>일 ');
+	document.write('</form>');
+	
+  
+  </script>
+ </head>
+ <body>
+
+ </body>
+</html>

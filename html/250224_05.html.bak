@@ -10,8 +10,8 @@
 	var y=now.getFullYear();
 	var m=now.getMonth()+1;
 	var d=now.getDate();
+	var w=now.getDay();
 	
-	document.write('<form name="fm">');
 	document.write('<select name="year">');
 	for(var i=1960;i<=y;i++){
 		if(i==y){
@@ -24,21 +24,42 @@
 	
 	document.write('<select name="month">');
 	for(var i=1;i<=12;i++){
-		document.write('<option value="'+i+'">'+i+'</option>');
+		if(i==m){
+			document.write('<option value="'+i+'" selected>'+i+'</option>');
+		}else{
+			document.write('<option value="'+i+'">'+i+'</option>');
+		}
 	}
 	document.write('</select>월 ');
 	
 	document.write('<select name="date">');
 	for(var i=1;i<=31;i++){
-		document.write('<option value="'+i+'">'+i+'</option>');
+		if(i==d){
+			document.write('<option value="'+i+'" selected>'+i+'</option>');
+		}else{
+			document.write('<option value="'+i+'">'+i+'</option>');
+		}
 	}
 	document.write('</select>일 ');
-	document.write('</form>');
 	
-  
   </script>
  </head>
  <body>
+ 
+ <script>
+	switch(w){
+		case 0:w='일'; break;
+		case 1:w='월'; break;
+		case 2:w='화'; break;
+		case 3:w='수'; break;
+		case 4:w='목'; break;
+		case 5:w='금'; break;
+		case 6:w='토'; break;
+	}
+ 
+ 
+	document.write(w+'요일');
+ </script>
 
  </body>
 </html>

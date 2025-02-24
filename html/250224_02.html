@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script>
+	function show1(){
+		document.fm.sizetf.value=document.fm.selectsize.value;
+	}
+	
+	function show2(){
+		document.fm.weighttf.value=document.fm.selectweight.value;
+	}
+	
+	function show3(){
+		var size=document.fm.sizetf.value;
+		var weight=document.fm.weighttf.value;
+		
+		window.alert(size+'\n'+weight);
+	}
+	
+	function show4(selbox,inbox){
+		var data=selbox.value;// document.fm.sel1 or sel2.value
+		// window.alert(data);
+		inbox.value=data;
+	}
+  
+  </script>
+  
+ </head>
+ <body>
+  <h1>방울 토마토 국내산</h1>
+  <form name="fm">
+  
+  <label>선택 1 방울 크기 : </label>
+  <select name="selectsize" onchange="show4(this,fm.sizetf);">
+	<option value="">선택하세요.</option>
+	<option value="방울 토마토 -소">방울 토마토 -소</option>
+	<option value="방울 토마토 -중">방울 토마토 -중</option>
+	<option value="방울 토마토 -대">방울 토마토 -대</option>
+  </select><br>
+  <input type="text" name="sizetf" value=""><br>
+  
+  <label>선택 2 중량 선택 : </label>
+  <select name="selectweight" onchange="show4(this);">
+	<option value="">선택하세요.</option>
+	<option value="750g x 2팩 총 1.5kg">750g x 2팩 총 1.5kg</option>
+	<option value="750g x 4팩 총 3kg">750g x 4팩 총 3kg</option>
+  </select><br>
+  <input type="text" name="weighttf" value=""><br>
+  <input type="button" value="구입확인" onclick="show3();">
+  
+  </form>
+ </body>
+</html>

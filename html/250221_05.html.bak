@@ -14,7 +14,7 @@
 				document.write('<tr></tr>');
 			}
 		}
-	  document.write('/<tr>');
+	  document.write('</tr>');
 	  document.write('</table>');
   </script>
   

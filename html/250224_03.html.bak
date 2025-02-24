@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script>
+	function show(){
+		if(document.fm.name.value==''){
+			window.alert('이름을 입력하셔야 합니다.');
+			document.fm.name.focus();
+			return false;
+		}
+		
+		if(document.fm.age.value==''){
+			window.alert('나이를 입력하셔야 합니다.');
+			document.fm.age.focus();
+			return false;
+		}
+		
+		if(document.fm.addr.value==''){
+			window.alert('주소를 입력하셔야 합니다.');
+			document.fm.addr.focus();
+			return false;
+		}
+	}
+	
+	function show2(){
+		if(document.fm.name.value==''){
+			window.alert('이름을 입력하셔야 합니다.');
+			event.preventDefault();
+		}
+	}
+	
+	function onlyNum(){
+		// event
+		// event.x & event.y : 마우스 x,y 좌표
+		// event.button : 1.왼쪽버튼 2.오른쪽버튼
+		// event.keyCode : 키보드로부터 입력받은 값의 아스키코드
+		
+		if(event.keyCode<48 && event.keyCode>57){
+			event.preventDefault();
+		}
+	}
+  
+  </script>
+ </head>
+ <body>
+  <h1>유효성 테스트</h1>
+  <form name="fm" action="http://www.naver.com" onsubmit="return show()">
+	  <label>이름</label>
+	  <input type="text" name="name"><br>
+	  <label>나이</label>
+	  <input type="text" name="age" onkeypress="onlyNum();"><br>
+	  <label>주소</label>
+	  <input type="text" name="addr"><br>
+	  <input type="submit" value="전달하기">
+  </form>
+ </body>
+</html>

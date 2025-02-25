@@ -15,10 +15,18 @@
 		var num=Math.floor(Math.random()*5);
 		
 		// document.write(msg[num]);
-		document.all.noticediv.innerHTML=msg[num];
+		// document.all.noticediv.innerHTML=msg[num];
+		var nodiv=document.getElementById('noticediv');
+		nodiv.innerHTML=msg[num];
 		// 일반적인 태그 객체
 		// 1.innerHTML
 		// 2.innerText
+		
+		// window.setTimeout() : 브라우저 객체가 가지고 있는 내장 기능
+		// 지정된 시간 후 원하는 함수를 호출하는 기능
+		// 형식 : window.setTiomout('함수명',시간); 시간:ms
+		
+		window.setTimeout('randomNotice()',2000);
 	}
   
   

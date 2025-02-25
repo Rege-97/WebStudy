@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script>
+	var i=1260;
+	function moveText(){
+		
+		var noticespan=document.getElementById('notice');
+		
+		noticespan.innerHTML='<style>span{margin-left:'+i+'px;}</style>공지사항 : 지각 결석을 하지 맙시다.';
+
+		if(i==1260){
+			i=0;
+			}else{
+				i++;
+				}
+
+		window.setTimeout('moveText()',10);	
+		
+	}
+  
+  
+  
+  </script>
+ 
+
+ </head>
+ <body onload="moveText()">
+ 
+ <span id="notice"></span>
+
+ </body>
+</html>

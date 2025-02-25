@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script>
+	var msg='지각,결석을 하지 맙시다...';
+	function scrollNotice(){
+		document.fm.notice.value=msg;
+		msg=msg.substring(1,msg.length)+msg.substring(0,1);
+		window.setTimeout('scrollNotice()',600);	
+	}
+  
+  </script>
+ </head>
+ <body onload="scrollNotice()">
+ <form name="fm">
+ <label>공지사항</label>
+ <input type="text" name="notice">
+ </form>
+  
+ </body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script>
+	function randomNotice(){
+		// 1.공지사항 5개
+		var msg=new Array(5);
+		msg[0]='지각을 하지 맙시다.';
+		msg[1]='결석을 하지 맙시다.';
+		msg[2]='복습을 철저히 합시다.';
+		msg[3]='건강관리 유의합시다.';
+		msg[4]='친구를 괴롭히지 맙시다.';
+		
+		document.fm.notice.value=msg[0];
+	}
+  
+  
+  </script>
+ </head>
+ <body onload="randomNotice()">
+  <form name="fm">
+  <label>공지사항 : </label>
+  <input type="text" name="notice">
+  </form>
+ </body>
+</html>

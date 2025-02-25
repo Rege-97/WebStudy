@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script>
+	function randomNotice(){
+		var msg=new Array(5);
+		msg[0]='지각을 하지 맙시다.';
+		msg[1]='결석을 하지 맙시다.';
+		msg[2]='복습을 철저히 합시다.';
+		msg[3]='건강관리 유의합시다.';
+		msg[4]='친구를 괴롭히지 맙시다.';
+		
+		var num=Math.floor(Math.random()*5);
+		
+		document.write(msg[num]);
+	}
+  
+  
+  </script>
+ </head>
+ <body>
+	<label>공 지 사 항</label>
+	<div style="border:2px solid darkblue;font-size:20px;width:250px;">
+		<script>
+			randomNotice();
+		</script>
+	</div>
+ </body>
+</html>

@@ -20,4 +20,13 @@
 		<servlet-name>hello</servlet-name>
 		<url-pattern>/hi</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>lifeCycle</servlet-name>
+		<servlet-class>com.yong.servlet.ServletLifeCycle</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>lifeCycle</servlet-name>
+		<url-pattern>/slc</url-pattern>
+	</servlet-mapping>
 </web-app>

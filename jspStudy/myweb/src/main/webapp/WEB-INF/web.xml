@@ -29,4 +29,13 @@
 		<servlet-name>lifeCycle</servlet-name>
 		<url-pattern>/slc</url-pattern>
 	</servlet-mapping>
+	
+		<servlet>
+		<servlet-name>guestCount</servlet-name>
+		<servlet-class>com.yong.servlet.GuestCountServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>guestCount</servlet-name>
+		<url-pattern>/count</url-pattern>
+	</servlet-mapping>
 </web-app>

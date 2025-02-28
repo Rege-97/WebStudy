@@ -1,0 +1,42 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ page import="java.sql.*"%>
+
+<%
+// 1.파라미터 가져오기
+String name = request.getParameter("name");
+String email = request.getParameter("email");
+String dept = request.getParameter("dept");
+
+// 2.DB 연동
+Class.forName("oracle.jdbc.driver.OracleDriver");
+String url = "jdbc:oracle:thin:@localhost:1521:xe";
+String user = "mydb";
+String pwd = "1234";
+
+Connection conn = DriverManager.getConnection(url, user, pwd);
+
+String sql = "delete from employee where name=?";
+PreparedStatement ps = conn.prepareStatement(sql);
+
+ps.setString(1, name);
+
+int count = ps.executeUpdate();
+
+ps.close();
+conn.close();
+
+if (count > 0) {
+%>
+<script>
+window.alert('사원퇴사 성공!'); location.href='emp.jsp';
+</script>
+<%
+} else {
+%>
+<script>
+window.alert('사원퇴사 실패!'); location.href='emp.jsp';
+</script>
+<%
+}
+%>

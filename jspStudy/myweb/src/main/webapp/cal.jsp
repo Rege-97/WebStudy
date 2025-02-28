@@ -7,16 +7,38 @@
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="css/mainLayout.css">
 <style>
-h2{
+h2 {
 	text-align: center;
 }
-form{
+
+fieldset {
+	width: 550px;
+	margin: 0px auto;
+}
+
+form {
 	text-align: center;
 }
-input{
-	width:80px;
+
+input[type="text"] {
+	width: 80px;
+	font-size: 20px;
+}
+
+#opers {
+	width: 50px;
+	text-align: center;
+	font-size: 20px;
 }
 </style>
+<script>
+	function show() {
+		if (document.fm.num1.value == '') {
+			window.alert('계산할 숫자를 입력하세요.');
+			return false;
+		}
+	}
+</script>
 </head>
 <body>
 	<%@include file="header.jsp"%>
@@ -24,20 +46,16 @@ input{
 		<article>
 			<h2>사 칙 계 산 기</h2>
 			<form name="fm" action="cal_ok.jsp">
-			<fieldset>
-			<legend>사칙계산기</legend>
-				<input type="text" name="num1"> 
-				<select name="oper">
-					<option value="+">+</option>
-					<option value="-">-</option>
-					<option value="*">*</option>
-					<option value="/">/</option>
-				</select>
-				<input type="text" name="num2"> 
-				&nbsp;&nbsp;
-				=
-				&nbsp;&nbsp;
-				<input type="submit" value="계산하기">
+				<fieldset>
+					<legend>사칙계산기</legend>
+					<input type="text" name="num1" required="required"> <select name="oper"
+						id="opers">
+						<option value="+">+</option>
+						<option value="-">-</option>
+						<option value="*">*</option>
+						<option value="/">/</option>
+					</select> <input type="text" name="num2" required="required"> &nbsp;&nbsp; =
+					&nbsp;&nbsp; <input type="submit" value="계산하기">
 				</fieldset>
 			</form>
 

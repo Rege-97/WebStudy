@@ -23,6 +23,10 @@ h3 {
 			<h2>사칙 연산 결과</h2>
 			<%
 			String num1_s = request.getParameter("num1");
+			if (num1_s == null || num1_s.equals("")) {
+
+			}
+
 			int num1 = Integer.parseInt(num1_s);
 			String num2_s = request.getParameter("num2");
 			int num2 = Integer.parseInt(num2_s);
@@ -45,8 +49,12 @@ h3 {
 				break;
 			}
 			%>
-			
-			<h3><%=num1 %> <%=oper %> <%=num2 %> = <%=result %></h3>
+
+			<h3><%=num1%>
+				<%=oper%>
+				<%=num2%>
+				=
+				<%=result%></h3>
 		</article>
 	</section>
 

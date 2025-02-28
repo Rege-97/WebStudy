@@ -20,6 +20,7 @@
 			<h2>아래에 계속 추가됨</h2>
 			<ul>
 				<li><a href="formTest.jsp">form테스트</a></li>
+				<li><a href="cal.jsp">사칙 계산기</a></li>
 			</ul>
 		</article>
 	</section>

@@ -43,23 +43,22 @@ table {
 							<td><input type="text" name="dept"></td>
 						</tr>
 						<tr>
-							<td colspan="2" align="center"><input type="submit" value="사원등록"> <input
-								type="reset" value="다시작성"></td>
+							<td colspan="2" align="center"><input type="submit"
+								value="사원등록"> <input type="reset" value="다시작성"></td>
 						</tr>
 					</table>
 				</fieldset>
 			</form>
-						<form name="empDel" action="empDel_ok.jsp">
+		</article>
+		<article>
+			<form name="empDel" action="empDel_ok.jsp">
 				<fieldset>
 					<legend>사원퇴사</legend>
 					<table>
 						<tr>
 							<th>사원 이름</th>
 							<td><input type="text" name="name"></td>
-						</tr>
-						<tr>
-							<td colspan="2" align="center"><input type="submit" value="사원퇴사"> <input
-								type="reset" value="다시작성"></td>
+							<td><input type="submit" value="사원퇴사"></td>
 						</tr>
 					</table>
 				</fieldset>

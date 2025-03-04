@@ -26,17 +26,9 @@ int count = ps.executeUpdate();
 ps.close();
 conn.close();
 
-if (count > 0) {
+String msg=count>0?"사원 퇴사 성공!":"사원 퇴사 실패!";
 %>
 <script>
-window.alert('사원퇴사 성공!'); location.href='emp.jsp';
+window.alert('<%=msg%>');
+location.href='emp.jsp';
 </script>
-<%
-} else {
-%>
-<script>
-window.alert('사원퇴사 실패!'); location.href='emp.jsp';
-</script>
-<%
-}
-%>

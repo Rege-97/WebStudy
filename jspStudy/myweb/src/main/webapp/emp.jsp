@@ -64,6 +64,12 @@ table {
 				</fieldset>
 			</form>
 		</article>
+		<article>
+			<fieldset>
+				<legend>모든 사원 내역</legend>
+				<h3><a href="empList.jsp">모든 사원 내역 보기</a></h3>
+			</fieldset>
+		</article>
 	</section>
 	<%@ include file="footer.jsp"%>
 </body>

@@ -70,6 +70,20 @@ table {
 				<h3><a href="empList.jsp">모든 사원 내역 보기</a></h3>
 			</fieldset>
 		</article>
+		<article>
+			<form name="empSearch" action="empSearch_ok.jsp">
+				<fieldset>
+					<legend>사원검색</legend>
+					<table>
+						<tr>
+							<th>사원 이름</th>
+							<td><input type="text" name="name"></td>
+							<td><input type="submit" value="사원검색"></td>
+						</tr>
+					</table>
+				</fieldset>
+			</form>
+		</article>
 	</section>
 	<%@ include file="footer.jsp"%>
 </body>

@@ -5,8 +5,6 @@
 <%
 // 1.파라미터 가져오기
 String name = request.getParameter("name");
-String email = request.getParameter("email");
-String dept = request.getParameter("dept");
 
 // 2.DB 연동
 Class.forName("oracle.jdbc.driver.OracleDriver");

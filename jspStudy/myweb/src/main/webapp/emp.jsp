@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="java.sql.*"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -67,7 +68,9 @@ table {
 		<article>
 			<fieldset>
 				<legend>모든 사원 내역</legend>
-				<h3><a href="empList.jsp">모든 사원 내역 보기</a></h3>
+				<h3>
+					<a href="empList.jsp">모든 사원 내역 보기</a>
+				</h3>
 			</fieldset>
 		</article>
 		<article>
@@ -78,6 +81,20 @@ table {
 						<tr>
 							<th>사원 이름</th>
 							<td><input type="text" name="name"></td>
+							<td><input type="submit" value="사원검색"></td>
+						</tr>
+					</table>
+				</fieldset>
+			</form>
+		</article>
+		<article>
+			<form name="empUpdateSel" action="empUpdate.jsp">
+				<fieldset>
+					<legend>사원수정</legend>
+					<table>
+						<tr>
+							<th>사원 번호</th>
+							<td><input type="text" name="idx"></td>
 							<td><input type="submit" value="사원검색"></td>
 						</tr>
 					</table>

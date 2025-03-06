@@ -9,6 +9,16 @@ public class EmpDTO {
 	public EmpDTO() {
 		System.out.println("EmpDTO 객체 생성됨!");
 	}
+	
+	public EmpDTO(int idx, String name, String email, String dept) {
+		super();
+		this.idx = idx;
+		this.name = name;
+		this.email = email;
+		this.dept = dept;
+	}
+
+
 
 	public int getIdx() {
 		return idx;

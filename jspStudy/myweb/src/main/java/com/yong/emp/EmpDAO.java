@@ -3,6 +3,8 @@ package com.yong.emp;
 import java.sql.*;
 import java.util.*;
 
+import javax.security.auth.message.callback.PrivateKeyCallback.Request;
+
 public class EmpDAO {
 
 	private Connection conn;
@@ -204,6 +206,116 @@ public class EmpDAO {
 
 			}
 		}
+	}
 
+	/** 사원 검색 관련 메서드 */
+	public ArrayList<EmpDTO> empSearch(EmpDTO edto) {
+		try {
+			dbConnect();
+			String sql = "select * from employee where name=? order by idx desc";
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, edto.getName());
+
+			rs = ps.executeQuery();
+			ArrayList<EmpDTO> arr = new ArrayList<EmpDTO>();
+
+			while (rs.next()) {
+				int idx = rs.getInt("idx");
+				String name = rs.getString("name");
+				String email = rs.getString("email");
+				String dept = rs.getString("dept");
+
+				EmpDTO dto = new EmpDTO(idx, name, email, dept);
+				arr.add(dto);
+			}
+
+			return arr;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (ps != null)
+					ps.close();
+				if (conn != null)
+					conn.close();
+			} catch (Exception e2) {
+
+			}
+		}
+	}
+
+	/** 수정사원 정보 조회 관련 메서드 */
+	public EmpDTO empUpdateSel(int idx) {
+		try {
+			dbConnect();
+			String sql = "select * from employee where idx=? order by idx desc";
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, idx);
+
+			rs = ps.executeQuery();
+
+			EmpDTO dto = null;
+			if (rs.next()) {
+				String name = rs.getString("name");
+				String email = rs.getString("email");
+				String dept = rs.getString("dept");
+
+				dto = new EmpDTO(idx, name, email, dept);
+			}
+
+			return dto;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (ps != null)
+					ps.close();
+				if (conn != null)
+					conn.close();
+			} catch (Exception e2) {
+
+			}
+		}
+	}
+
+	/** 사원 검색 관련 메서드2 */
+	public int empUpdate(EmpDTO edto) {
+		try {
+			dbConnect();
+			String sql = "update employee set name=?, email=?, dept=? where idx=?";
+			PreparedStatement ps = conn.prepareStatement(sql);
+
+			System.out.println(edto.getName());
+
+			ps.setString(1, edto.getName());
+			ps.setString(2, edto.getEmail());
+			ps.setString(3, edto.getDept());
+			ps.setInt(4, edto.getIdx());
+
+			int count = ps.executeUpdate();
+
+			return count;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			return -1;
+		} finally {
+			try {
+				if (ps != null)
+					ps.close();
+				if (conn != null)
+					conn.close();
+			} catch (Exception e2) {
+
+			}
+		}
 	}
 }

@@ -80,6 +80,34 @@ table {
 				</h3>
 			</fieldset>
 		</article>
+		<article>
+			<form name="empSearch2" action="empSearch2_ok.jsp">
+				<fieldset>
+					<legend>사원검색</legend>
+					<table>
+						<tr>
+							<th>사원 이름</th>
+							<td><input type="text" name="name"></td>
+							<td><input type="submit" value="사원검색"></td>
+						</tr>
+					</table>
+				</fieldset>
+			</form>
+		</article>
+		<article>
+			<form name="empUpdateSel" action="empUpdate2.jsp">
+				<fieldset>
+					<legend>사원수정</legend>
+					<table>
+						<tr>
+							<th>사원 번호</th>
+							<td><input type="text" name="idx"></td>
+							<td><input type="submit" value="사원검색"></td>
+						</tr>
+					</table>
+				</fieldset>
+			</form>
+		</article>
 	</section>
 	<%@include file="../footer.jsp"%>
 </body>

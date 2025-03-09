@@ -4,9 +4,9 @@
 <jsp:setProperty property="*" name="edto" />
 <jsp:useBean id="edao" class="com.yong.emp.EmpDAO"></jsp:useBean>
 <%
-int count = edao.empUpdate(edto);
+int result = edao.empUpdate(edto);
 
-String msg = count > 0 ? "사원 수정 성공!" : "사원 수정 실패!";
+String msg = result > 0 ? "사원 수정 성공!" : "사원 수정 실패!";
 %>
 <script>
 window.alert('<%=msg%>');

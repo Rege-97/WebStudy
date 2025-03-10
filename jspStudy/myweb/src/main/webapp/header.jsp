@@ -7,8 +7,8 @@
 	<!-- 메뉴 영역으로 구분 -->
 	<nav>
 		<ul>
-			<li><a href="index.jsp">Home</a></li>
-			<li><a href="profile.jsp">Profile</a></li>
+			<li><a href="/myweb/index.jsp">Home</a></li>
+			<li><a href="/myweb/profile.jsp">Profile</a></li>
 			<li><a href="#">자유게시판</a></li>
 			<li><a href="#">파일업로드</a></li>
 			<li><a href="#">방명록</a></li>

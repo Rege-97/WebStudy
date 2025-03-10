@@ -1,9 +1,12 @@
 package com.yong.emp;
 
-import java.sql.*;
-import java.util.*;
-
-import javax.security.auth.message.callback.PrivateKeyCallback.Request;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.Vector;
+import javax.sql.*;
+import javax.naming.*;
 
 public class EmpDAO {
 
@@ -15,28 +18,11 @@ public class EmpDAO {
 		System.out.println("EmpDAO 객체 생성됨!");
 	}
 
-	public void dbConnect() {
-		try {
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-			String url = "jdbc:oracle:thin:@localhost:1521:xe";
-			String user = "mydb";
-			String pwd = "1234";
-			conn = DriverManager.getConnection(url, user, pwd);
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			try {
-
-			} catch (Exception e2) {
-
-			}
-		}
-	}
-
 	/** 사원 등록 관련 메서드 */
 	public int empAdd(EmpDTO dto) {
 		try {
-			dbConnect();
+			conn = com.yong.db.YongDB.getConn();
+
 			String sql = "insert into employee values(employee_idx_sq.nextval,?,?,?)";
 			ps = conn.prepareStatement(sql);
 
@@ -63,7 +49,8 @@ public class EmpDAO {
 	/** 사원 퇴사 관련 메서드 */
 	public int empDel(EmpDTO dto) {
 		try {
-			dbConnect();
+			conn = com.yong.db.YongDB.getConn();
+
 			String sql = "delete from employee where name=?";
 			PreparedStatement ps = conn.prepareStatement(sql);
 
@@ -90,7 +77,8 @@ public class EmpDAO {
 	/** 모든 사원 내역 관련 메서드 1번 */
 	public EmpDTO[] empListPart1() {
 		try {
-			dbConnect();
+			conn = com.yong.db.YongDB.getConn();
+
 			String sql = "select * from employee order by idx desc";
 			ps = conn.prepareStatement(sql);
 
@@ -132,7 +120,8 @@ public class EmpDAO {
 	/** 모든 사원 내역 관련 메서드 2번 */
 	public ArrayList<EmpDTO> empListPart2() {
 		try {
-			dbConnect();
+			conn = com.yong.db.YongDB.getConn();
+
 			String sql = "select * from employee order by idx desc";
 			ps = conn.prepareStatement(sql);
 
@@ -171,7 +160,8 @@ public class EmpDAO {
 
 	public String empListPart3() {
 		try {
-			dbConnect();
+			conn = com.yong.db.YongDB.getConn();
+
 			String sql = "select * from employee order by idx desc";
 			ps = conn.prepareStatement(sql);
 
@@ -211,7 +201,8 @@ public class EmpDAO {
 	/** 사원 검색 관련 메서드 */
 	public ArrayList<EmpDTO> empSearch(EmpDTO edto) {
 		try {
-			dbConnect();
+			conn = com.yong.db.YongDB.getConn();
+
 			String sql = "select * from employee where name=? order by idx desc";
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, edto.getName());
@@ -251,7 +242,8 @@ public class EmpDAO {
 	/** 수정사원 정보 조회 관련 메서드 */
 	public EmpDTO empUpdateSel(int idx) {
 		try {
-			dbConnect();
+			conn = com.yong.db.YongDB.getConn();
+
 			String sql = "select * from employee where idx=? order by idx desc";
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, idx);
@@ -289,7 +281,8 @@ public class EmpDAO {
 	/** 사원 검색 관련 메서드2 */
 	public int empUpdate(EmpDTO edto) {
 		try {
-			dbConnect();
+			conn = com.yong.db.YongDB.getConn();
+
 			String sql = "update employee set name=?, email=?, dept=? where idx=?";
 			PreparedStatement ps = conn.prepareStatement(sql);
 

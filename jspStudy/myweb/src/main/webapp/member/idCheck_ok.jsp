@@ -1,21 +1,25 @@
-<%@page import="com.yong.member.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
+ <jsp:useBean id="mdao" class="com.yong.member.MemberDAO"></jsp:useBean> <!-- 기능객체 가져옴 -->
+ <%
+ String userid=request.getParameter("userid");
+ boolean result=mdao.idCheck(userid); //false면 데이터 없고 true면 데이터 있는 것
 
-<%
-request.setCharacterEncoding("utf-8");
-%>
-<!--  -->
-<jsp:useBean id="mdto" class="com.yong.member.MemberDTO"></jsp:useBean>
-<jsp:setProperty property="*" name="mdto" />
-<jsp:useBean id="mdao" class="com.yong.member.MemberDAO"></jsp:useBean>
-<%
-//MemberDTO mdto = new MemberDTO();
-
-int result = mdao.memberJoin(mdto);
-String msg = result > 0 ? "회원가입을 축하합니다" : "회원가입에 오류가 발생하였습니다.";
-%>
-<script>
-   window.alert('<%=msg%>');
-   location.href = '/myweb/index.jsp';
-</script>
+ if(result){
+    %>
+    <script>
+    window.alert('이미 가입되어있는 아이디입니다.');
+    location.href='idCheck.jsp';
+    </script>
+    <%
+ }else{
+    %>
+    <script>
+    window.alert('<%=userid%>는 사용가능한 아이디입니다.');
+    //나를 가르키는 키워드 opener
+    opener.document.memberJoin.id.value='<%=userid%>';
+    window.self.close();
+    </script>
+    <%
+ }
+ %>

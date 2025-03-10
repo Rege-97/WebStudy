@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <!-- 상단으로 구분 -->
 <header>
-	<div>로그인 | 회원가입</div>
+	<div>로그인 | <a href="/myweb/member/memberJoin.jsp">회원가입</a></div>
 	<h1>JSP Study Site</h1>
 	<!-- 메뉴 영역으로 구분 -->
 	<nav>

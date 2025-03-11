@@ -1,7 +1,11 @@
 package com.yong.member;
 
 import java.util.*;
+
+import com.yong.emp.EmpDTO;
+
 import java.sql.*;
+import java.sql.Date;
 
 public class MemberDAO {
 
@@ -57,6 +61,62 @@ public class MemberDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 			return false; // 중복검사했을 때 통과될 수 있도록 false로 함
+		} finally {
+			try {
+
+				if (rs != null)
+					rs.close();
+				if (ps != null)
+					ps.close();
+				if (conn != null)
+					conn.close();
+			} catch (Exception e2) {
+			}
+		}
+	}
+
+	/** 회원 검색 관련 메서드 */
+	public ArrayList<MemberDTO> mamberFind(String search_col, String search_text) {
+		try {
+			conn = com.yong.db.YongDB.getConn();
+
+			String sql = "select * from jsp_member where id=?";
+
+			if (search_col.equals("id")) {
+				sql = "select * from jsp_member where id=?";
+			} else if (search_col.equals("name")) {
+				sql = "select * from jsp_member where name=?";
+			} else if (search_col.equals("email")) {
+				sql = "select * from jsp_member where email=?";
+			} else if (search_col.equals("tel")) {
+				sql = " select * from jsp_member where tel=?";
+			}
+
+			
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, search_text);
+			rs = ps.executeQuery();
+
+			ArrayList<MemberDTO> arr = new ArrayList<MemberDTO>();
+
+			while (rs.next()) {
+				int idx = rs.getInt("idx");
+				String id = rs.getString("id");
+				String pwd = rs.getString("pwd");
+				String name = rs.getString("name");
+				String email = rs.getString("email");
+				String tel = rs.getString("tel");
+				String addr = rs.getString("addr");
+				Date joindate = rs.getDate("joindate");
+
+				MemberDTO dto = new MemberDTO(idx, id, pwd, name, email, tel, addr, joindate);
+				arr.add(dto);
+			}
+
+			return arr;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
 		} finally {
 			try {
 

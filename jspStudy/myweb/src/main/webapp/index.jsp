@@ -24,6 +24,7 @@
 				<li><a href="emp.jsp">사원관리프로그램(원시형)</a></li>
 				<li><a href="emp/emp2.jsp">사원관리프로그램(Beans형)</a></li>
 				<li><a href="member/memberFind.jsp">회원검색</a></li>
+				<li><a href="phonebook/phonebookForm.jsp">전화번호부(복습)</a></li>
 			</ul>
 		</article>
 	</section>

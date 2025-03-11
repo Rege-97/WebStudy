@@ -76,25 +76,14 @@ public class MemberDAO {
 	}
 
 	/** 회원 검색 관련 메서드 */
-	public ArrayList<MemberDTO> mamberFind(String search_col, String search_text) {
+	public ArrayList<MemberDTO> memberFind(String fkey, String fvalue) {
 		try {
 			conn = com.yong.db.YongDB.getConn();
 
-			String sql = "select * from jsp_member where id=?";
-
-			if (search_col.equals("id")) {
-				sql = "select * from jsp_member where id=?";
-			} else if (search_col.equals("name")) {
-				sql = "select * from jsp_member where name=?";
-			} else if (search_col.equals("email")) {
-				sql = "select * from jsp_member where email=?";
-			} else if (search_col.equals("tel")) {
-				sql = " select * from jsp_member where tel=?";
-			}
-
+			String sql = "select * from jsp_member where "+fkey+"=?";
 			
 			ps = conn.prepareStatement(sql);
-			ps.setString(1, search_text);
+			ps.setString(1, fvalue);
 			rs = ps.executeQuery();
 
 			ArrayList<MemberDTO> arr = new ArrayList<MemberDTO>();

@@ -109,5 +109,39 @@ public class PhonebookDAO {
 		}
 
 	}
+	/** 모든 전화번호 내역 */
+	public ArrayList<PhonebookDTO> phoneSearch(String name) {
+		try {
+			conn = com.yong.db.YongDB.getConn(); // 커넥션 할당 //드라이버 로딩
+			String sql = "select * from phonebook where name=? order by idx desc";
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, name);
+			rs = ps.executeQuery();
+			ArrayList<PhonebookDTO> arr = new ArrayList<PhonebookDTO>();
+			while (rs.next()) {
+				int idx = rs.getInt("idx");
+				String tel = rs.getString("tel");
+				String addr = rs.getString("addr"); // 여기까지만 하면 담고 데이터 사라짐
+				PhonebookDTO dto = new PhonebookDTO(idx, name, tel, addr); // 카트에 담음
+				arr.add(dto);// 카트를 트럭에 담음
+			}
+			return arr;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (ps != null)
+					ps.close();
+				if (conn != null)
+					conn.close();
+			} catch (Exception e2) {
+			}
+
+		}
+
+	}
 
 }

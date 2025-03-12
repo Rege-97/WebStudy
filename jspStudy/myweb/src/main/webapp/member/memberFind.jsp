@@ -1,7 +1,6 @@
 <%@page import="com.yong.member.MemberDTO"%>
 <%@page import="java.util.ArrayList"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,12 +35,18 @@ request.setCharacterEncoding("UTF-8");
 					<legend>회원검색</legend>
 					<table id="search">
 						<tr>
-							<td><select name="fkey">
+							<td>
+								<select name="fkey">
 									<option value="id">아이디
 									<option value="name">이름
-							</select></td>
-							<td><input type="text" name="fvalue"></td>
-							<td><input type="submit" value="검색"></td>
+								</select>
+							</td>
+							<td>
+								<input type="text" name="fvalue">
+							</td>
+							<td>
+								<input type="submit" value="검색">
+							</td>
 						</tr>
 					</table>
 				</fieldset>

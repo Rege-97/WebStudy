@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@page import="java.util.*"%>
+<%@page import="java.net.*"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,6 +18,35 @@
 		</article>
 		<!-- 컨텐츠 영역 -->
 		<article id="mainSubmenu">
+			<%
+			String lastDay = "첫 방문이시군요!!";
+			Cookie cks[] = request.getCookies();
+
+			if (cks != null) {
+				for (int i = 0; i < cks.length; i++) {
+					if (cks[i].getName().equals("lastDay")) {
+				lastDay = "마지막 접속일 : " + URLDecoder.decode(cks[i].getValue());
+				break;
+					}
+				}
+			}
+			%>
+			<h2><%=lastDay%></h2>
+			<%
+			Calendar now = Calendar.getInstance();
+
+			int y = now.get(Calendar.YEAR);
+			int m = now.get(Calendar.MONTH) + 1;
+			int d = now.get(Calendar.DATE);
+			String now_s = y + "년 " + m + "월 " + d + "일";
+
+			now_s = URLEncoder.encode(now_s);
+
+			Cookie ck = new Cookie("lastDay", now_s);
+			ck.setMaxAge(60 * 60 * 24 * 30);
+
+			response.addCookie(ck);
+			%>
 			<h2>아래에 계속 추가됨</h2>
 			<ul>
 				<li><a href="formTest.jsp">form테스트</a></li>

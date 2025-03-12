@@ -7,8 +7,29 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="css/mainLayout.css">
+<script>
+	function openPopup() {
+		window.open('popup.jsp', 'popup', 'width=450 ,height=400');
+	}
+</script>
+<%
+String lastDay = "첫 방문이시군요!!";
+String popupck = null;
+Cookie cks[] = request.getCookies();
+
+if (cks != null) {
+	for (int i = 0; i < cks.length; i++) {
+		if (cks[i].getName().equals("lastDay")) {
+	lastDay = "마지막 접속일 : " + URLDecoder.decode(cks[i].getValue());
+		}
+		if (cks[i].getName().equals("popupck")) {
+	popupck = "on";
+		}
+	}
+}
+%>
 </head>
-<body>
+<body <%=popupck == null ? "onload='openPopup()'" : ""%>>
 	<%@include file="header.jsp"%>
 	<!-- 컨텐츠 범위지정 -->
 	<section>
@@ -18,19 +39,8 @@
 		</article>
 		<!-- 컨텐츠 영역 -->
 		<article id="mainSubmenu">
-			<%
-			String lastDay = "첫 방문이시군요!!";
-			Cookie cks[] = request.getCookies();
 
-			if (cks != null) {
-				for (int i = 0; i < cks.length; i++) {
-					if (cks[i].getName().equals("lastDay")) {
-				lastDay = "마지막 접속일 : " + URLDecoder.decode(cks[i].getValue());
-				break;
-					}
-				}
-			}
-			%>
+
 			<h2><%=lastDay%></h2>
 			<%
 			Calendar now = Calendar.getInstance();

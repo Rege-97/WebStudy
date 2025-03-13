@@ -80,8 +80,8 @@ public class MemberDAO {
 		try {
 			conn = com.yong.db.YongDB.getConn();
 
-			String sql = "select * from jsp_member where "+fkey+"=?";
-			
+			String sql = "select * from jsp_member where " + fkey + "=?";
+
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, fvalue);
 			rs = ps.executeQuery();
@@ -118,5 +118,90 @@ public class MemberDAO {
 			} catch (Exception e2) {
 			}
 		}
+	}
+
+	public int loginCheck(String id, String pwd) {
+
+		try {
+			conn = com.yong.db.YongDB.getConn();
+			String sql = "Select * from jsp_member where id=?";
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, id);
+			rs = ps.executeQuery();
+
+			boolean id_check = false;
+			boolean pwd_check = false;
+
+			while (rs.next()) {
+				id_check = true;
+			}
+			if (id_check) {
+				sql = "Select * from jsp_member where id=? and pwd=?";
+				ps = conn.prepareStatement(sql);
+				ps.setString(1, id);
+				ps.setString(2, pwd);
+				rs = ps.executeQuery();
+
+				while (rs.next()) {
+					pwd_check = true;
+				}
+			}
+
+			if (!id_check) {
+				return 1;
+			} else if (id_check && !pwd_check) {
+				return 2;
+			} else if (id_check && pwd_check) {
+				return 3;
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (ps != null)
+					ps.close();
+				if (conn != null)
+					conn.close();
+			} catch (Exception e2) {
+
+			}
+		}
+
+		return 0;
+
+	}
+
+	public String getUserInfo(String id) {
+		try {
+			conn = com.yong.db.YongDB.getConn();
+			String sql = "Select * from jsp_member where id=?";
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, id);
+			rs = ps.executeQuery();
+			String name=null;
+			while(rs.next()) {
+				name=rs.getString("name");
+			}
+			
+			return name;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (ps != null)
+					ps.close();
+				if (conn != null)
+					conn.close();
+			} catch (Exception e2) {
+
+			}
+		}
+
 	}
 }

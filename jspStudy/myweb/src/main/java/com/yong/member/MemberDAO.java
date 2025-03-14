@@ -13,6 +13,11 @@ public class MemberDAO {
 	private PreparedStatement ps;
 	private ResultSet rs;
 
+	public static final int NOT_ID = 1;
+	public static final int NOT_PWD = 2;
+	public static final int LOGIN_OK = 3;
+	public static final int ERROR = -1;
+
 	public MemberDAO() {
 
 	}
@@ -120,43 +125,29 @@ public class MemberDAO {
 		}
 	}
 
-	public int loginCheck(String id, String pwd) {
+	public int loginCheck(String userid, String userpwd) {
 
 		try {
 			conn = com.yong.db.YongDB.getConn();
-			String sql = "Select * from jsp_member where id=?";
+			String sql = "Select pwd from jsp_member where id=?";
 			ps = conn.prepareStatement(sql);
-			ps.setString(1, id);
+			ps.setString(1, userid);
 			rs = ps.executeQuery();
 
-			boolean id_check = false;
-			boolean pwd_check = false;
-
-			while (rs.next()) {
-				id_check = true;
-			}
-			if (id_check) {
-				sql = "Select * from jsp_member where id=? and pwd=?";
-				ps = conn.prepareStatement(sql);
-				ps.setString(1, id);
-				ps.setString(2, pwd);
-				rs = ps.executeQuery();
-
-				while (rs.next()) {
-					pwd_check = true;
+			if (rs.next()) {
+				String dbpwd = rs.getString("pwd");
+				if (dbpwd.equals(userpwd)) {
+					return LOGIN_OK;
+				} else {
+					return NOT_PWD;
 				}
-			}
-
-			if (!id_check) {
-				return 1;
-			} else if (id_check && !pwd_check) {
-				return 2;
-			} else if (id_check && pwd_check) {
-				return 3;
+			} else {
+				return NOT_ID;
 			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
+			return ERROR;
 		} finally {
 			try {
 				if (rs != null)
@@ -168,25 +159,19 @@ public class MemberDAO {
 			} catch (Exception e2) {
 
 			}
-		}
-
-		return 0;
-
+		}	
 	}
 
-	public String getUserInfo(String id) {
+	public String getUserInfo(String userid) {
 		try {
 			conn = com.yong.db.YongDB.getConn();
-			String sql = "Select * from jsp_member where id=?";
+			String sql = "Select name from jsp_member where id=?";
 			ps = conn.prepareStatement(sql);
-			ps.setString(1, id);
-			rs = ps.executeQuery();
-			String name=null;
-			while(rs.next()) {
-				name=rs.getString("name");
-			}
 			
-			return name;
+			ps.setString(1, userid);
+			rs = ps.executeQuery();
+			rs.next();
+			return rs.getString(1);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;

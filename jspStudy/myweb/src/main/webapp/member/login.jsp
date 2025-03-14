@@ -4,36 +4,46 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<%
-String remember=(String)session.getAttribute("remember");
+<style>
+li {
+	list-style-type: none;
+}
 
+label {
+	width: 90px;
+	float: left;
+}
+
+div {
+	text-align: right;
+}
+</style>
+<%
+String saveid="";
+
+Cookie cks[]=request.getCookies();
+if(cks!=null){
+	for(int i=0;i<cks.length;i++){
+		if(cks[i].getName().equals("saveid")){
+			saveid=cks[i].getValue();
+		}
+	}
+	
+}
 %>
 </head>
 <body>
-	<form name="login" action="login_ok.jsp">
-		<fieldset style="width: 200px; height: 100px; margin: 0px auto;">
+	<form name="login" action="login_ok.jsp" method="post">
+		<fieldset>
 			<legend>로그인</legend>
-			<table>
-				<tr>
-					<td>
-						<label>ID</label>
-					</td>
-					<td>
-						<input type="text" name="id" <%=remember!=null?"value='"+remember+"'":"" %>>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<label>PW</label>
-					</td>
-					<td>
-						<input type="password" name="pwd">
-					</td>
-				</tr>
-			</table>
-				<input type="checkbox" name="remember" value="on" <%=remember!=null?"checked":"" %> >
-				ID 기억
+			<ul>
+				<li><label>ID</label> <input type="text" name="userid" value="<%=saveid %>"></li>
+				<li><label>Password</label> <input type="password" name="userpwd"></li>
+			</ul>
+			<div>
+			<input type="checkbox" name="saveid" value="on" <%=saveid.equals("") ?"":"checked"%>>ID 기억하기
 				<input type="submit" value="로그인">
+			</div>
 		</fieldset>
 
 	</form>
